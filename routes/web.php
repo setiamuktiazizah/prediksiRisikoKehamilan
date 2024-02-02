@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,26 +14,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Autentikasi */
+
+// Route untuk menampilkan form login
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+// Route untuk menghandle proses login
+Route::post('/login', [AuthController::class, 'login']);
+
+// Route untuk menampilkan form register
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+
+// Route untuk menghandle proses register
+Route::post('/register', [AuthController::class, 'register']);
+
+// Route untuk proses logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+/* Authorization */
+
+Route::middleware(['auth'])->group(function () {
+    // User
+    Route::get('/dashboard', function () {
+        return view('user.dashboard');
+    });
+    
+    // Admin
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/dashboard-admin', function () {
+            return view('template.admin.dashboard');
+        });
+    });
+});
+
+
+// Guest
 Route::get('/', function () {
     return view('user.dashboard');
-});
-
-Route::get('/auth', function () {
-    return view('admin');
-});
-
-Route::get('/template', function () {
-    return view('template.user.template');
-});
-
-Route::get('/template-admin', function () {
-    return view('template.admin.template');
-});
-
-Route::get('/datatables', function () {
-    return view('template.admin.tables-data');
-});
-
-Route::get('/dashboard-admin', function () {
-    return view('template.admin.dashboard');
 });
