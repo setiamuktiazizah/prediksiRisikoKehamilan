@@ -14,7 +14,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-/* Autentikasi */
+/* Auth */
 
 // Route untuk menampilkan form login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -31,15 +31,13 @@ Route::post('/register', [AuthController::class, 'register']);
 // Route untuk proses logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-/* Authorization */
-
 Route::middleware(['auth'])->group(function () {
-    // User
+    // Rute yang dapat diakses oleh semua pengguna terautentikasi
     Route::get('/dashboard', function () {
         return view('user.dashboard');
     });
     
-    // Admin
+    // Rute yang dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard-admin', function () {
             return view('template.admin.dashboard');
@@ -47,8 +45,30 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+// Guest 
 
-// Guest
 Route::get('/', function () {
     return view('user.dashboard');
+})->name('home');
+
+Route::get('/register-user', function () {
+    return view('auth.register-user');
 });
+
+Route::get('/login-user', function () {
+    return view('auth.login-user');
+});
+
+Route::get('/datatables', function () {
+    return view('template.admin.tables-data');
+});
+
+
+// Route::get('/login', function () {
+//     return view('register');
+// });
+
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

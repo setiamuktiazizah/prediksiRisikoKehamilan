@@ -10,8 +10,9 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link rel="icon" href="{{asset('images\logo.jpg')}}">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,6 +62,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="{{asset('images/logo.jpg')}}" alt="logo-mommymate" style="width: 35px; height: fit-content; margin-right: 10px;">
         <h1>Mommy<span>Mate</span></h1>
       </a>
 
