@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,16 +55,6 @@ Route::get('/', function () {
 Route::get('/datatables', function () {
     return view('template.admin.tables-data');
 });
-
-Route::get('/dashboardadmin', function () {
-    return view('template.admin.dashboard');
-});
-
-
-// Route::get('/login', function () {
-//     return view('register');
-// });
-
 
 Auth::routes();
 
