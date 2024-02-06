@@ -5,13 +5,15 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Icon -->
+  <link rel="icon" href="{{asset('images\logo.jpg')}}">
   <!-- Favicons -->
-  <link href="{{asset('admin/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <!-- <link href="{{asset('admin/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -29,6 +31,22 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
+  <style>
+    .logo span {
+      margin-left: 10px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleHeaderBtn = document.querySelector('.toggle-header-btn');
+      const header = document.getElementById('header');
+
+      toggleHeaderBtn.addEventListener('click', function() {
+        header.classList.toggle('header-open');
+      });
+    });
+  </script>
+
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jan 09 2024 with Bootstrap v5.3.2
@@ -44,11 +62,11 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="admin/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+      <i class="bi bi-list toggle-sidebar-btn toggle-header-btn"></i>
+      <a href="index.html" class="logo d-flex align-items-center" style="margin-left: 10px;">
+        <img src="{{asset('images/logo.jpg')}} " alt="">
+        <span class="d-none d-lg-block">Admin</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -70,7 +88,7 @@
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
+            <i class="bi bi-bell" style="color: white;"></i>
             <span class="badge bg-primary badge-number">4</span>
           </a><!-- End Notification Icon -->
 
@@ -212,13 +230,13 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" style="color: white;">{{Auth::user()->name}} </span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6>{{Auth::user()->name}}</h6>
+              <span>Bidan</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -255,9 +273,12 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
+                <span style="margin-left: 5px;">{{ __('Logout') }}</span>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                </form>
               </a>
             </li>
 

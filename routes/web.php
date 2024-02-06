@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     // Rute yang dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard-admin', function () {
-            return view('template.admin.dashboard');
+            return view('admin.dashboard');
         });
     });
 });
@@ -51,16 +51,12 @@ Route::get('/', function () {
     return view('user.dashboard');
 })->name('home');
 
-Route::get('/register-user', function () {
-    return view('auth.register-user');
-});
-
-Route::get('/login-user', function () {
-    return view('auth.login-user');
-});
-
 Route::get('/datatables', function () {
     return view('template.admin.tables-data');
+});
+
+Route::get('/dashboardadmin', function () {
+    return view('template.admin.dashboard');
 });
 
 
