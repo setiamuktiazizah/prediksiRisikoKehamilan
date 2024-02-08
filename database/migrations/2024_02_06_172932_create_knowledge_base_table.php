@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kode_diagnosis');
             $table->string('kode_gejala');
             $table->double('nilai_densitas');
-            $table->string('gejala');
+            $table->string('gejala')->nullable();
             $table->timestamps();
         });
 

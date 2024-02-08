@@ -21,7 +21,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link " href="/dashboard-admin">
+        <a class="nav-link " href="{{ URL::to('/data-basis-pengetahuan') }}">
           <i class="bi bi-book"></i>
           <span>Data Basis Pengetahuan</span>
         </a>
