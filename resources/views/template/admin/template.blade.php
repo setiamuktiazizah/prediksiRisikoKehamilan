@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Icon -->
-  <link rel="icon" href="{{asset('images\logo.jpg')}}">
+  <link rel="icon" href="{{asset('images\logo.jpeg')}}">
   <!-- Favicons -->
   <!-- <link href="{{asset('admin/img/favicon.png')}}" rel="icon">
   <link href="{{asset('admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> -->
@@ -34,6 +34,125 @@
   <style>
     .logo span {
       margin-left: 10px;
+    }
+
+    /* Tambahkan CSS untuk tabel responsif */
+    /* .table-responsive {
+      overflow-x: auto;
+    } */
+
+    /* Tambahkan CSS untuk memperindah tampilan tabel */
+    .table-bordered {
+      border-collapse: collapse;
+      border-radius: 10px;
+      width: 100%;
+      /* Tambahkan properti ini untuk memastikan tabel mengisi lebar kontainer */
+    }
+
+    .table-bordered thead th,
+    .table-bordered tbody td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th {
+      background-color: #f8f9fa;
+      color: #212529;
+      font-weight: bold;
+    }
+
+    .table-bordered tbody td {
+      background-color: #fff;
+      color: #212529;
+    }
+
+    .table-bordered tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* Mengatur tata letak tombol "Show" di kiri atas */
+    .dataTables_length {
+      float: left;
+      margin-bottom: 20px;
+    }
+
+    /* Mengatur tata letak tombol pencarian dan tombol "Show" */
+    /* .dataTables_length,
+    .dataTables_filter {
+      margin-right: 20px;
+    } */
+
+    /* Mengatur tata letak tombol pencarian di sebelah kanan tombol "Show" */
+    .dataTables_filter {
+      float: right;
+      margin-bottom: 20px;
+    }
+
+    /* Mengatur tata letak tombol pagination di pojok kiri */
+    .dataTables_paginate {
+      float: right;
+    }
+
+    /* Mengatur tata letak tombol pencarian saat dihover */
+    .dataTables_filter label {
+      float: right;
+    }
+
+    /* Mengatur tata letak input pencarian saat dihover */
+    .dataTables_filter label input[type="search"]:hover {
+      color: #333;
+      border: 1px solid;
+    }
+
+    /* Mengubah warna latar belakang dan teks pada tombol paginasi */
+    .dataTables_paginate {
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .dataTables_paginate .paginate_button {
+      background-color: green;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 2px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .dataTables_paginate .paginate_button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Memberikan efek hover pada tombol paginasi */
+    .dataTables_paginate .paginate_button.current,
+    .dataTables_paginate .paginate_button.current:hover {
+      background-color: darkgreen !important;
+      color: #fff !important;
+    }
+
+    /* Mengatur tampilan tombol "Previous" dan "Next" */
+    .dataTables_paginate .paginate_button.previous,
+    .dataTables_paginate .paginate_button.next {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 2px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .dataTables_paginate .paginate_button.previous:hover,
+    .dataTables_paginate .paginate_button.next:hover {
+      background-color: darkgrey;
+    }
+
+    /* Mengatur tampilan disabled pada tombol "Previous" dan "Next" */
+    .dataTables_paginate .paginate_button.disabled {
+      background-color: #ccc;
+      color: #999;
+      cursor: not-allowed;
     }
   </style>
   <script>
@@ -64,7 +183,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <i class="bi bi-list toggle-sidebar-btn toggle-header-btn"></i>
       <a href="index.html" class="logo d-flex align-items-center" style="margin-left: 10px;">
-        <img src="{{asset('images/logo.jpg')}} " alt="">
+        <img src="{{asset('images/logo-lama.jpg')}} " alt="">
         <span class="d-none d-lg-block">Admin</span>
       </a>
     </div><!-- End Logo -->
@@ -312,6 +431,26 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('admin/js/main.js')}}"></script>
+
+  <!-- Datatable JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script> -->
+  <script>
+    $(document).ready(function() {
+      var table = $('#responsive-table').DataTable({
+        rowReorder: {
+          selector: 'td:nth-child(2)'
+        },
+        responsive: true
+      });
+    });
+  </script>
+  <script src="{{ asset('js/datadiagnosis.js') }}"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script> -->
+
 
 </body>
 

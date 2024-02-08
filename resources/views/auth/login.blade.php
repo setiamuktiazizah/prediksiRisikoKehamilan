@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- Icon -->
-    <link rel="icon" href="{{asset('images/logo.jpg')}}">
+    <link rel="icon" href="{{asset('images/logo.jpeg')}}">
     <!-- Vendor CSS Files -->
     <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <style>
@@ -48,7 +48,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-4 form-container">
                 <div class="d-flex align-items-center justify-content-center mb-3">
-                    <img src="{{asset('images/logo.jpg')}}" alt="logo-mommymate" style="width: 35px; height: fit-content; margin-right: 10px;">
+                    <img src="{{asset('images/logo.jpeg')}}" alt="logo-mommymate" style="width: 35px; height: fit-content; margin-right: 10px;">
                     <h4>Mommy<span style="color: #F6C90E">Mate</span></h4>
                 </div>
                 <h4 class="text-center">Log In</h4>
