@@ -25,9 +25,9 @@
                 </div>
                 @endif
                 <div class="row justify-content-center align-items-center mt-3"> <!-- Baris di tengah secara horizontal -->
-                    <div class="col-md-16"> 
+                    <div class="col-md-16">
                         <div class="mb-3">
-                            <a href="{{ URL::to('data-diagnosis/create') }}" class="btn btn-success"> <!-- Tombol penuh lebar -->
+                            <a href="{{ URL::to('data-gejala/create') }}" class="btn btn-success"> <!-- Tombol penuh lebar -->
                                 <i class="bi bi-plus"></i> Tambah Data
                             </a>
                         </div>
@@ -36,9 +36,8 @@
                                 <thead class="text-center" style="background-color: #28a745; color: white;">
                                     <tr>
                                         <th class="align-middle">No.</th>
-                                        <th class="align-middle">Kode Diagnosis</th>
-                                        <th class="align-middle">Jenis Diagnosis</th>
-                                        <th class="align-middle">Rekomendasi</th>
+                                        <th class="align-middle">Kode Gejala</th>
+                                        <th class="align-middle">Gejala</th>
                                         <th class="align-middle">Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,27 +45,23 @@
                                     @php
                                     $i = 1;
                                     @endphp
-                                    @foreach ($dataDiagnosis as $diagnosis)
+                                    @foreach ($dataGejala as $gejala)
                                     <tr>
                                         <td class="align-middle text-center">{{ $i }}</td>
-                                        <td class="align-middle">{{ $diagnosis->kode_diagnosis }}</td>
-                                        <td class="align-middle">{{ $diagnosis->nama_diagnosis }}</td>
-                                        <td class="align-middle">
-                                            <ul>
-                                                @foreach (json_decode($diagnosis->solusi) as $solusiDiagnosis)
-                                                <li>{{ $solusiDiagnosis }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </td>
+                                        <td class="align-middle text-center">{{ $gejala->kode_gejala }}</td>
+                                        <td class="align-middle">{{ $gejala->gejala }}</td>
+                                        {{-- <td class="align-middle text-center">{{ $gejala->nilai_densitas }}</td> --}}
                                         <td class="align-middle text-center">
-                                            <a href="{{ URL::to('data-diagnosis/' . $diagnosis->id_diagnosis) . '/edit' }}" class="btn btn-warning">
-                                                <i class="bi bi-pencil"></i> Edit
+                                            <a href="{{ URL::to('data-gejala/' . $gejala->id_gejala) . '/edit' }}" class="btn btn-warning px-3">
+                                                <i class="bi bi-edit me-2"></i>
+                                                Edit
                                             </a>
-                                            <form action="{{ URL::to('data-diagnosis/' . $diagnosis->id_diagnosis) }}" method="POST" class="d-inline">
+                                            <form action="{{ URL::to('data-gejala/' . $gejala->id_gejala) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger" type="submit">
-                                                    <i class="bi bi-trash"></i> Hapus
+                                                    <i class="bi bi-trash"></i>
+                                                    Hapus
                                                 </button>
                                             </form>
                                         </td>

@@ -15,7 +15,7 @@
         <!-- Content Row -->
         <div class="card kartu-custom mb-5">
             <div class="card-header" style="background-color: #9FC088;">
-                <p class="m-0 p-0 text-black"><b>Tambah Data Diagnosis</b></p>
+                <p class="m-0 p-0 text-black"><b>Edit Data Diagnosis</b></p>
             </div>
             <div class="card-body mt-3">
                 <form action="{{ route('data-diagnosis.update', $id_diagnosis) }}" method="POST">
@@ -78,6 +78,7 @@
                             </button>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>

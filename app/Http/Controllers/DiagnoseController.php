@@ -126,9 +126,9 @@ class DiagnoseController extends Controller
      * @param  \App\Models\diagnosis  $diagnosis
      * @return \Illuminate\Http\Response
      */
-    public function destroy($data_diagnosis, Diagnose $diagnosis)
+    public function destroy($id_diagnosis, Diagnose $diagnosis)
     {
-        $datadiagnosis = $diagnosis->find($data_diagnosis);
+        $datadiagnosis = $diagnosis->find($id_diagnosis);
         $datadiagnosis->delete();
 
         return redirect()->to('data-diagnosis')->with('success', 'Data diagnosis berhasil dihapus');
