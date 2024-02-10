@@ -1,53 +1,80 @@
 @extends('template.user.template')
 
 @section('content')
+<style>
+    /* CSS tambahan untuk judul */
+    .title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #7286D3;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* CSS tambahan untuk tabel */
+    .kartu-custom {
+        border-radius: 15px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th {
+        border-bottom: 2px solid #dee2e6;
+        background-color: #7286D3;
+        color: #fff;
+    }
+
+    .table-bordered tbody td {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-bordered tbody tr:nth-of-type(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table-bordered tbody tr:hover {
+        background-color: #f0f0f0;
+    }
+
+    .table-bordered tbody td:last-child {
+        text-align: center;
+    }
+
+    .btn-custom-2 {
+        color: #fff;
+    }
+</style>
 <section id="hero" class="hero">
     <div class="container-fluid p-0 m-0 my-5">
-        <h3 class="text-center mb-5 text-custom">Halaman Konsultasi</h3>
-        <div class="card kartu-custom">
-            <div class="card-header text-white fw-bold">
-                Konsultasi Gejala
+        <h3 class="title">Halaman Konsultasi</h3>
+        <div class="card kartu-custom" style="margin-left: 100px; margin-right: 100px; margin-top: 50px;">
+            <div class="card-header text-white fw-bold" style="background-color: #7286D3; font-size: 18px">
+                Konsultasi Gejala <br> Silahkan pilih gejala yang Anda alami
             </div>
             <div class="card-body">
                 <form action="{{ URL::to('konsultasi') }}" method="post">
                     @csrf
                     <div class="mb-3 row">
-                        <label for="nama_pemilik" class="col-sm-2 col-form-label text-custom">Nama Pasien</label>
+                        <label for="nama_pemilik" class="col-sm-2 col-form-label text-custom" style="font-weight: bold;">Nama Pasien</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('nama_pemilik') is-invalid @enderror"
-                                id="nama_pemilik" name="nama_pemilik" value="{{ old('nama_pemilik') }}">
+                            <input type="text" class="form-control @error('nama_pemilik') is-invalid @enderror" id="nama_pemilik" name="nama_pemilik" value="{{ old('nama_pemilik') }}">
                             @error('nama_pemilik')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
                             @enderror
                         </div>
                     </div>
                     @if (session()->has('error'))
-                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                            </symbol>
-                            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                            </symbol>
-                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                            </symbol>
-                        </svg>
-                        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div>
-                                {{ session('error') }}
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
+                    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                        <div>
+                            {{ session('error') }}
                         </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                     @endif
                     <table class="table table-bordered custom-table" style="width: 100%">
                         <colgroup>
@@ -66,28 +93,25 @@
                         </thead>
                         <tbody>
                             @php
-                                $i = 1;
+                            $i = 1;
                             @endphp
                             @foreach ($dataGejala as $gejala)
-                                <tr>
-                                    <td class="text-center">{{ $i }}</td>
-                                    <td class="text-center">{{ $gejala['kode_gejala'] }}</td>
-                                    <td>{{ $gejala['gejala'] }}</td>
-                                    <td class="text-center">
-                                        <input type="checkbox" class="form-check-input" name="resultGejala[]"
-                                            value="{{ $gejala['kode_gejala'] }}"
-                                            @if (is_array(old('resultGejala')) && in_array($gejala['kode_gejala'], old('resultGejala'))) checked @endif>
-                                    </td>
-                                </tr>
-
-                                @php
-                                    $i++;
-                                @endphp
+                            <tr>
+                                <td class="text-center">{{ $i }}</td>
+                                <td class="text-center">{{ $gejala['kode_gejala'] }}</td>
+                                <td>{{ $gejala['gejala'] }}</td>
+                                <td class="text-center">
+                                    <input type="checkbox" class="form-check-input" name="resultGejala[]" value="{{ $gejala['kode_gejala'] }}" @if (is_array(old('resultGejala')) && in_array($gejala['kode_gejala'], old('resultGejala'))) checked @endif>
+                                </td>
+                            </tr>
+                            @php
+                            $i++;
+                            @endphp
                             @endforeach
                         </tbody>
                     </table>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-custom-2 fw-bold" type="submit"><i class="bi-solid bi-floppy-disk me-1"></i>
+                        <button class="btn btn-custom-2 fw-bold" style="background-color: #7286D3;" type="submit"><i class="bi-solid bi-floppy-disk me-1"></i>
                             Proses Data
                         </button>
                         <button class="btn btn-secondary fw-bold" type="reset"><i class="bi-solid bi-ban me-1"></i>

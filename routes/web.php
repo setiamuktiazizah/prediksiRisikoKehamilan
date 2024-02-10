@@ -32,8 +32,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('user.dashboard');
     });
-
-    Route::get('konsultasi', [ConsultationController::class, 'index'])->name('konsultasi');
     Route::post('konsultasi', [ConsultationController::class, 'kalkulator']);
     Route::get('konsultasi/{id_konsultasi}', [ConsultationController::class, 'showdata']);
 
@@ -53,10 +51,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', function () {
     return view('user.dashboard');
 })->name('home');
-
-Route::get('/datatables', function () {
-    return view('template.admin.tables-data');
-});
+Route::get('konsultasi', [ConsultationController::class, 'index'])->name('konsultasi');
 
 Auth::routes();
 
