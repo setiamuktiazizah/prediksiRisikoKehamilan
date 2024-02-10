@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar">
   <ul>
     <li><a href="#hero">Home</a></li>
-    <li><a href="#about">Konsultasi</a></li>
+    <li><a href="{{ route('konsultasi') }}">Konsultasi</a></li>
     <li><a href="#services">Pedoman</a></li>
     <li><a href="#portfolio">Artikel</a></li>
     {{-- <li><a href="#team">Team</a></li> --}}

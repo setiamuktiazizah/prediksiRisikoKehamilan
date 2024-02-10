@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DiagnoseController;
 use App\Http\Controllers\SymptomController;
@@ -32,15 +33,18 @@ Route::middleware(['auth'])->group(function () {
         return view('user.dashboard');
     });
 
-    Route::resource('data-diagnosis', DiagnoseController::class)->except('show');
-    Route::resource('data-gejala', SymptomController::class)->except('show');
-    Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');
-    
+    Route::get('konsultasi', [ConsultationController::class, 'index'])->name('konsultasi');
+    Route::post('konsultasi', [ConsultationController::class, 'kalkulator']);
+    Route::get('konsultasi/{id_konsultasi}', [ConsultationController::class, 'showdata']);
+
     // Rute yang dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard-admin', function () {
             return view('admin.dashboard');
         });
+        Route::resource('data-diagnosis', DiagnoseController::class)->except('show');
+        Route::resource('data-gejala', SymptomController::class)->except('show');
+        Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');
     });
 });
 
