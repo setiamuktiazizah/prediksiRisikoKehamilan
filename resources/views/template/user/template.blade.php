@@ -29,6 +29,53 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 
+  <style>
+    /* CSS tambahan untuk judul */
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* CSS tambahan untuk tabel */
+    .kartu-custom {
+      border-radius: 15px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-bordered {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th {
+      border-bottom: 2px solid #dee2e6;
+      background-color: #7286D3;
+      color: #fff;
+    }
+
+    .table-bordered tbody td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered tbody tr:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+
+    .table-bordered tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .table-bordered tbody td:last-child {
+      text-align: center;
+    }
+
+    .btn-custom-2 {
+      color: #fff;
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: Impact
   * Updated: Jan 09 2024 with Bootstrap v5.3.2

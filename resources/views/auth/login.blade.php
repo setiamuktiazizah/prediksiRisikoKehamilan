@@ -11,8 +11,7 @@
     <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
-            /* Ganti warna latar belakang sesuai kebutuhan Anda */
+            background-color: #7286D3;
         }
 
         .container {

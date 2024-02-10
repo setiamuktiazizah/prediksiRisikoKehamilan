@@ -2,9 +2,9 @@
   <ul>
     <li><a href="{{ route('home') }}">Home</a></li>
     <li><a href="{{ route('konsultasi') }}">Konsultasi</a></li>
-    <li><a href="#services">Pedoman</a></li>
-    <li><a href="#portfolio">Artikel</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#portfolio">Bookmark</a></li>
+    <li><a href="{{ route('pedoman')}}">Pedoman</a></li>
+    <!-- <li><a href="#contact">Contact</a></li> -->
     <!-- Authentication Links -->
     @guest
     @if (Route::has('login'))

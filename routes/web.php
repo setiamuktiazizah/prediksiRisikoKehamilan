@@ -31,9 +31,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /* Authorization */
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('user.dashboard');
-    });
     Route::post('konsultasi', [ConsultationController::class, 'kalkulator']);
     Route::get('konsultasi/{id_konsultasi}', [ConsultationController::class, 'showdata']);
 
@@ -53,6 +50,9 @@ Route::get('/', function () {
     return view('user.dashboard');
 })->name('home');
 Route::get('konsultasi', [ConsultationController::class, 'index'])->name('konsultasi');
+Route::get('/pedoman', function () {
+    return view('user.guideline');
+})->name('pedoman');
 
 Auth::routes();
 
