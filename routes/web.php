@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DiagnoseController;
 use App\Http\Controllers\HistoryController;
@@ -38,9 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Rute yang dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
-        Route::get('/dashboard-admin', function () {
-            return view('admin.dashboard');
-        });
+        Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard-admin');
         Route::resource('data-diagnosis', DiagnoseController::class)->except('show');
         Route::resource('data-gejala', SymptomController::class)->except('show');
         Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');
