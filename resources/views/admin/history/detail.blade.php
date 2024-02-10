@@ -17,11 +17,11 @@
             <div class="card-header" style="background-color: #9FC088;">
                 <p class="m-0 p-0 text-black"><b>Data Riwayat</b></p>
             </div>
-            <div class="card kartu-custom mb-3">
-                <div class="card-header text-white fw-bold">
+            <div class="card kartu-custom">
+                <div class="card-header text-black fw-bold">
                     Hasil Konsultasi
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
                     <div class="container-fluid">
                         <h6 class="text-custom">*) Detail Pasien</h6>
                         <table class="table table-bordered custom-table" style="width: 100%">
@@ -57,7 +57,7 @@
                                 @php
                                 $i = 1;
                                 @endphp
-                                @foreach ($diagnosa->gejala as $gejalaYangDipilih)
+                                @foreach ($diagnosis->gejala_diagnosis as $gejalaYangDipilih)
                                 <tr>
                                     <td class="text-center">{{ $i }}</td>
                                     <td class="text-center">{{ $gejalaYangDipilih->kode_gejala }}</td>
@@ -83,13 +83,13 @@
                                 <td>Tingkat Risiko: </td>
                                 <td class="text-center">:</td>
                                 <td class="fw-bold">
-                                    {{ $diagnosa->nama_diagnosa }}
+                                    {{ $diagnosis->nama_diagnosis }}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Persentase dan Nilai Kepercayaan</td>
                                 <td class="text-center align-middle">:</td>
-                                <td class="align-middle">{!! '<b>' . $diagnosa->persentase_penyakit . '</b>' . ' / (' . $diagnosa->nilai_belief . ')' !!}</td>
+                                <td class="align-middle">{!! '<b>' . $diagnosis->persentase_diagnosis . '</b>' . ' / (' . $diagnosis->nilai_belief . ')' !!}</td>
                             </tr>
                         </table>
                     </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="card-footer"></div>
             </div>
-            <a href="{{ URL::to('data-riwayat') }}" class="btn btn-custom mb-3">
+            <a href="{{ URL::to('data-riwayat') }}" class="btn btn-success mb-3">
                 <i class="bi bi-arrow-alt-circle-left me-1"></i>
                 Kembali
             </a>

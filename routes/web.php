@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DiagnoseController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SymptomController;
 use App\Http\Controllers\KnowledgeBaseController;
 
@@ -43,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('data-diagnosis', DiagnoseController::class)->except('show');
         Route::resource('data-gejala', SymptomController::class)->except('show');
         Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');
+        Route::resource('data-riwayat', HistoryController::class);
     });
 });
 

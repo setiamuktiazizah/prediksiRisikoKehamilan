@@ -27,7 +27,7 @@
         </a>
       </li><!-- End Data Basis Pengetahuan Nav -->
       <li class="nav-item">
-        <a class="nav-link " href="/dashboard-admin">
+        <a class="nav-link " href="{{ URL::to('/data-riwayat') }}">
           <i class="bi bi-clipboard"></i>
           <span>Data Riwayat</span>
         </a>

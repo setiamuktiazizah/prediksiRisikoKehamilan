@@ -154,6 +154,32 @@
       color: #999;
       cursor: not-allowed;
     }
+
+    .table-bordered {
+        border: 1px solid #9DBC98;
+    }
+
+    .table-bordered thead th {
+        border-bottom: 2px solid #9DBC98;
+        background-color: #9DBC98;
+        color: black;
+    }
+
+    .table-bordered tbody td {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-bordered tbody tr:nth-of-type(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table-bordered tbody tr:hover {
+        background-color: #f0f0f0;
+    }
+
+    .table-bordered tbody td:last-child {
+        text-align: center;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {

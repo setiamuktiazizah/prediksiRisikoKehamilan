@@ -7,8 +7,8 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-custom-2-800">
-                <i class="bi bi-diagram-2 mr-1"></i>
-                {{ $titlePage }}
+                <i class="bi bi-clipboard mr-1"></i>
+                 {{ $titlePage }}
             </h1>
         </div>
 
@@ -40,18 +40,18 @@
                                     @php
                                     $i = 1;
                                     @endphp
-                                    @foreach ($dataDiagnosa as $diagnosa)
+                                    @foreach ($dataRiwayat as $riwayat)
                                     <tr>
                                         <td class="align-middle text-center">{{ $i }}</td>
-                                        <td class="align-middle text-center">{{ $diagnosa->nama_pemilik }}</td>
+                                        <td class="align-middle text-center">{{ $riwayat->nama_pemilik }}</td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ URL::to('data-riwayat/' . $diagnosa->id_diagnosa) }}" class="btn btn-custom-2">
+                                            <a href="{{ URL::to('data-riwayat/' . $riwayat->id_riwayat) }}" class="btn btn-success">
                                                 <i class="bi bi-eye me-1"></i>
                                                 Detail
                                             </a>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <form action="{{ URL::to('data-riwayat/' . $diagnosa->id_diagnosa) }}" method="POST" class="d-inline">
+                                            <form action="{{ URL::to('data-riwayat/' . $riwayat->id_riwayat) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger" type="submit">

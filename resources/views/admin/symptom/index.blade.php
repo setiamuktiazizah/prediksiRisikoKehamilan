@@ -7,8 +7,8 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-custom-2-800">
-                <i class="bi bi-diagram-2 mr-1"></i>
-                {{ $titlePage }}
+                <i class="bi bi-person mr-1"></i>
+                 {{ $titlePage }}
             </h1>
         </div>
 
