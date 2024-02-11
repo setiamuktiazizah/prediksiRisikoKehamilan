@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use App\Models\Diagnose;
 use App\Models\History;
 use App\Models\KnowledgeBase;
@@ -22,6 +23,7 @@ class DashboardController extends Controller
             'dataBasisPengetahuan' => KnowledgeBase::count(),
             'dataRiwayat' => History::count(),
             'dataPasien' => User::where('is_admin', 0)->count(),
+            'activityLogs' => ActivityLog::all(),
         ];
 
         return view('admin.dashboard', $datas);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use App\Models\Diagnose;
 use App\Models\KnowledgeBase;
 use App\Models\Symptom;
@@ -46,6 +47,11 @@ class KnowledgeBaseController extends Controller
      */
     public function store(KnowledgeBase $basisPengetahuan, Request $request)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'tambah data basis pengetahuan',
+        ]);
+
         $validateReq = $request->validate([
             'kode_diagnosis' => 'required',
             'kode_gejala' => 'required',
@@ -102,6 +108,11 @@ class KnowledgeBaseController extends Controller
      */
     public function update($id_basis_pengetahuan, Request $request, KnowledgeBase $basisPengetahuan)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'update data basis pengetahuan',
+        ]);
+
         $dataBasisPengetahuan = $basisPengetahuan->find($id_basis_pengetahuan);
 
         $validateReq = $request->validate([
@@ -126,6 +137,11 @@ class KnowledgeBaseController extends Controller
      */
     public function destroy($id_basis_pengetahuan, KnowledgeBase $basisPengetahuan)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'hapus data basis pengetahuan',
+        ]);
+
         $dataBasisPengetahuan = $basisPengetahuan->find($id_basis_pengetahuan);
         $dataBasisPengetahuan->delete();
 

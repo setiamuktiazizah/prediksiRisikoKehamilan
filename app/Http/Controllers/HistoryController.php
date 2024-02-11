@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use App\Models\History;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,11 @@ class HistoryController extends Controller
 
     public function destroy($id_riwayat)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'hapus data riwayat',
+        ]);
+
         $dataRiwayat = History::find($id_riwayat);
         $dataRiwayat->delete();
 

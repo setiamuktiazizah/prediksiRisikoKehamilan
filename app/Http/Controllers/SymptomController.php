@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use App\Models\Symptom;
 use Illuminate\Http\Request;
 
@@ -42,6 +43,11 @@ class SymptomController extends Controller
      */
     public function store(Symptom $gejala, Request $request)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'tambah data gejala',
+        ]);
+
         $validateReq = $request->validate([
             'kode_gejala' => 'required|unique:symptom',
             'gejala' => 'required',
@@ -94,6 +100,11 @@ class SymptomController extends Controller
      */
     public function update($id_gejala, Request $request, Symptom $gejala)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'update data gejala',
+        ]);
+
         $dataGejala = $gejala->find($id_gejala);
 
         $validateReq = $request->validate([
@@ -116,6 +127,11 @@ class SymptomController extends Controller
      */
     public function destroy($id_gejala, Symptom $gejala)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'hapus data gejala',
+        ]);
+
         $dataGejala = $gejala->find($id_gejala);
         $dataGejala->delete();
 

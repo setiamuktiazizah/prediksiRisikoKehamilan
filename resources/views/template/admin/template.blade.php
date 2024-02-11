@@ -156,29 +156,29 @@
     }
 
     .table-bordered {
-        border: 1px solid #9DBC98;
+      border: 1px solid #9DBC98;
     }
 
     .table-bordered thead th {
-        border-bottom: 2px solid #9DBC98;
-        background-color: #9DBC98;
-        color: black;
+      border-bottom: 2px solid #9DBC98;
+      background-color: #9DBC98;
+      color: black;
     }
 
     .table-bordered tbody td {
-        border: 1px solid #dee2e6;
+      border: 1px solid #dee2e6;
     }
 
     .table-bordered tbody tr:nth-of-type(even) {
-        background-color: #f9f9f9;
+      background-color: #f9f9f9;
     }
 
     .table-bordered tbody tr:hover {
-        background-color: #f0f0f0;
+      background-color: #f0f0f0;
     }
 
     .table-bordered tbody td:last-child {
-        text-align: center;
+      text-align: center;
     }
   </style>
   <script>

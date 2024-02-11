@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Diagnose;
+use App\Models\ActivityLog;
 
 use Illuminate\Http\Request;
 
@@ -42,6 +43,12 @@ class DiagnoseController extends Controller
      */
     public function store(Diagnose $diagnosis, Request $request)
     {
+        // Log activity
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'tambah data diagnosis',
+        ]);
+
         $validateReq = $request->validate([
             'kode_diagnosis' => 'required|unique:diagnose',
             'nama_diagnosis' => 'required'
@@ -56,6 +63,7 @@ class DiagnoseController extends Controller
         $diagnosis->nama_diagnosis = $validateReq['nama_diagnosis'];
         $diagnosis->solusi = json_encode($solusidiagnosis);
         $diagnosis->save();
+        dd($request);
 
         return redirect()->to('data-diagnosis')->with('success', 'Data diagnosis berhasil ditambahkan');
     }
@@ -100,6 +108,11 @@ class DiagnoseController extends Controller
      */
     public function update($id_diagnosis, Request $request, Diagnose $diagnosis)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'update data diagnosis',
+        ]);
+
         $validateReq = $request->validate([
             'kode_diagnosis' => 'required',
             'nama_diagnosis' => 'required'
@@ -128,6 +141,11 @@ class DiagnoseController extends Controller
      */
     public function destroy($id_diagnosis, Diagnose $diagnosis)
     {
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'hapus data diagnosis',
+        ]);
+
         $datadiagnosis = $diagnosis->find($id_diagnosis);
         $datadiagnosis->delete();
 
