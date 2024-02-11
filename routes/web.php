@@ -9,6 +9,7 @@ use App\Http\Controllers\DiagnoseController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SymptomController;
 use App\Http\Controllers\KnowledgeBaseController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     // Rute yang dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard-admin');
+        Route::resource('data-user',UserController::class)->except('show');
         Route::resource('data-diagnosis', DiagnoseController::class)->except('show');
         Route::resource('data-gejala', SymptomController::class)->except('show');
         Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');

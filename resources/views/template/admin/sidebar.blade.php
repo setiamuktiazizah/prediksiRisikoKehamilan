@@ -9,6 +9,12 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
+        <a class="nav-link " href="{{ URL::to('/data-user')}}">
+          <i class="bi bi-lock-fill"></i>
+          <span>Data User</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
         <a class="nav-link " href="{{ URL::to('/data-diagnosis') }}">
           <i class="bi bi-pencil"></i>
           <span>Data Diagnosis</span>

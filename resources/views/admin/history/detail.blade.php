@@ -49,8 +49,8 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>No.</th>
-                                    <th>Kode Gejala.</th>
-                                    <th>Nama Gejala.</th>
+                                    <th>Kode Gejala</th>
+                                    <th>Nama Gejala</th>
                                 </tr>
                             </thead>
                             <tbody>
