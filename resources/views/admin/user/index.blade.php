@@ -26,11 +26,6 @@
                 @endif
                 <div class="row justify-content-center align-items-center mt-3"> <!-- Baris di tengah secara horizontal -->
                     <div class="col-md-16">
-                        <div class="mb-3">
-                            <a href="{{ URL::to('data-user/create') }}" class="btn btn-success"> <!-- Tombol penuh lebar -->
-                                <i class="bi bi-plus"></i> Tambah User
-                            </a>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered custom-table" id="responsive-table">
                                 <thead class="text-center" style="background-color: #28a745; color: white;">
