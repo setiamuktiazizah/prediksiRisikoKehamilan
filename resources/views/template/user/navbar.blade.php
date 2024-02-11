@@ -2,7 +2,7 @@
   <ul>
     <li><a href="{{ route('home') }}">Home</a></li>
     <li><a href="{{ route('konsultasi') }}">Konsultasi</a></li>
-    <li><a href="#portfolio">Bookmark</a></li>
+    <li><a href="{{ route('bookmark') }}">Bookmark</a></li>
     <li><a href="{{ route('pedoman')}}">Pedoman</a></li>
     <!-- <li><a href="#contact">Contact</a></li> -->
     <!-- Authentication Links -->

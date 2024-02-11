@@ -32,7 +32,7 @@
                             <tbody>
                                 <tr>
                                     <td>Nama</td>
-                                    <td>{{ $namaPemilik }}</td>
+                                    <td>{{ ucwords($namaPemilik) }}</td>
                                 </tr>
                             </tbody>
                         </table>

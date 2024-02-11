@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,7 @@ Route::get('konsultasi', [ConsultationController::class, 'index'])->name('konsul
 Route::get('/pedoman', function () {
     return view('user.guideline');
 })->name('pedoman');
+Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
+Route::get('bookmark/{id_bookmark}', [BookmarkController::class, 'showdata'])->name('bookmark.show');
 
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

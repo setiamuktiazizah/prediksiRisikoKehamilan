@@ -105,6 +105,7 @@ class ConsultationController extends Controller
                 $konsultasi->nama_pemilik = $validateReq['nama_pemilik'];
                 $konsultasi->diagnosis = json_encode($konsultasiSavedData);
                 $konsultasi->solusi = json_encode($variabelTampilan['Solusi_Diagnosis']);
+                $konsultasi->user_id = auth()->user()->id;
                 $konsultasi->save();
                 $idKonsultasi = $konsultasi->id_riwayat;
 

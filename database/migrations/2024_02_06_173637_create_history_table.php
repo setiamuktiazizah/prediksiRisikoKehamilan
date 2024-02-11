@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_pemilik');
             $table->longText('diagnosis');
             $table->longText('solusi');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }
