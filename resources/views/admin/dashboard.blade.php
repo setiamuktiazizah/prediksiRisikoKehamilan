@@ -399,12 +399,14 @@
         </div>
 
         <div class="card-body pb-0">
-          <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+          <h5 class="card-title"> Hasil Diagnosis <span>| Today</span></h5>
 
           <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
           <script>
             document.addEventListener("DOMContentLoaded", () => {
+              const visualisasiDiagnosis = JSON.parse('{!! json_encode($visualisasiDiagnosis) !!}');
+
               echarts.init(document.querySelector("#trafficChart")).setOption({
                 tooltip: {
                   trigger: 'item'
@@ -414,13 +416,14 @@
                   left: 'center'
                 },
                 series: [{
-                  name: 'Access From',
+                  name: 'Diagnosis',
                   type: 'pie',
                   radius: ['40%', '70%'],
                   avoidLabelOverlap: false,
                   label: {
-                    show: false,
-                    position: 'center'
+                    show: true,
+                    position: 'inside',
+                    formatter: '{b}: {c}'
                   },
                   emphasis: {
                     label: {
@@ -433,30 +436,23 @@
                     show: false
                   },
                   data: [{
-                      value: 1048,
-                      name: 'Search Engine'
+                      value: visualisasiDiagnosis.Rendah,
+                      name: 'Rendah'
                     },
                     {
-                      value: 735,
-                      name: 'Direct'
+                      value: visualisasiDiagnosis.Sedang,
+                      name: 'Sedang'
                     },
                     {
-                      value: 580,
-                      name: 'Email'
-                    },
-                    {
-                      value: 484,
-                      name: 'Union Ads'
-                    },
-                    {
-                      value: 300,
-                      name: 'Video Ads'
+                      value: visualisasiDiagnosis.Tinggi,
+                      name: 'Tinggi'
                     }
                   ]
                 }]
               });
             });
           </script>
+
 
         </div>
       </div><!-- End Website Traffic -->

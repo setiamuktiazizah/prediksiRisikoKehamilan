@@ -6,7 +6,7 @@
     .title {
         font-size: 30px;
         font-weight: bold;
-        color: #7286D3;
+        color: black;
         text-align: center;
         margin-bottom: 20px;
     }
