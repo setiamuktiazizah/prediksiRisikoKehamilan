@@ -40,7 +40,7 @@
       </li><!-- End Data Riwayat Nav -->
       <li class="nav-item">
         <a class="nav-link " href="{{ URL::to('/data-artikel') }}">
-          <i class="bi bi-file"></i>
+          <i class="bi bi-file-text"></i>
           <span>Data Artikel</span>
         </a>
       </li><!-- End Data Artikel Nav -->
