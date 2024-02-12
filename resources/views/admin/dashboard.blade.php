@@ -391,7 +391,7 @@
           </div>
 
           <div class="card-body" data-count="{{ $activityLogs->count() }}">
-            <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+            <h5 class="card-title">Aktivitas Terbaru <span>| Today</span></h5>
 
             <div class="activity" id="recentActivity">
               @php
