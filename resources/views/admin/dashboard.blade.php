@@ -505,7 +505,7 @@
         </div>
 
         <div class="card-body pb-0">
-          <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+          <h5 class="card-title">Artikel &amp; Terbaru <span>| Today</span></h5>
 
           <div class="news">
             <div class="post-item clearfix">
