@@ -89,14 +89,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3 row text-center">
+                    <!-- <div class="mb-3 row text-center">
                         @if (Route::has('password.request'))
                         <a class="btn btn-link forgot-password-link" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                         @endif
-                    </div>
-                    <div class="mb-0 row text-center">
+                    </div> -->
+                    <div class="mt-3 row text-center">
                         <div class="col">
                             <button type="submit" class="btn btn-primary">
                                 {{ __('Login') }}
