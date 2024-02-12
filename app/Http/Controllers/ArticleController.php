@@ -19,11 +19,24 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $dataArtikel = Article::all();
+        
+        // Ambil URL gambar dari Google Drive
+        foreach ($dataArtikel as $artikel) {
+            if ($artikel->filepath) {
+                $googleDriverFileId = $artikel->filepath;
+                $data = Gdrive::get($googleDriverFileId);
+                $fileContent = $data->file;
+            }
+        }
+
         $datas = [
             'titlePage' => 'Data Artikel',
             'navLink' => 'data-artikel',
-            'dataArtikel' => Article::all()
+            'dataArtikel' => $dataArtikel,
+            'fileContent' => $fileContent,
         ];
+
         return view('admin.article.index', $datas);
     }
 

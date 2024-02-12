@@ -21,8 +21,11 @@
                         <div class="col">
                             <div class="card mb-4 border-0">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('path-to-your-image/' . $artikel->image) }}" class="card-img-top" alt="Artikel Image">
+                                    <div class="col-md-4 d-flex justify-content-center align-items-center mt-5">
+                                        @if($artikel->filepath)
+                                        <br>
+                                        <img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 200px" alt="gambar artikel">
+                                        @endif
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">

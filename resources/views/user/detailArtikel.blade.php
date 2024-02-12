@@ -9,20 +9,12 @@
                 <div class="card-header text-white fw-bold text-center" style="background-color: #7286D3; font-size: 18px">
                     {{ $artikel->judul }}</span>
                 </div>
-
-                <!-- Content Row -->
-                <!-- <div class="card kartu-custom mb-5">
-                <div class="card kartu-custom text-center">
-                    <div class="card-header text-black fw-bold">
-                        {{ $artikel->judul }}
-                    </div>
-                    <div class="card-body mt-3 text-justify"> -->
+                <div class="d-flex justify-content-center align-items-center mt-5">
+                    <img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 200px" alt="gambar artikel">
+                </div>
                 <div class="container-fluid mt-3 mb-3">
                     {!! $artikel->isi !!}
                 </div>
-                <!-- </div>
-                    <div class="card-footer"></div>
-                </div> -->
                 <a href="{{ route('artikel') }}" class="btn btn-info mb-3">
                     <i class="bi bi-arrow-alt-circle-left me-1"></i>
                     Kembali

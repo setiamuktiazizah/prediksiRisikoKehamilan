@@ -37,6 +37,7 @@
                                     <tr>
                                         <th class="align-middle">No.</th>
                                         <th class="align-middle">Judul</th>
+                                        <th class="align-middle">Foto</th>
                                         <th class="align-middle">Konten</th>
                                         <th class="align-middle">Aksi</th>
                                     </tr>
@@ -48,6 +49,7 @@
                                     @foreach ($dataArtikel as $artikel)
                                     <tr>
                                         <td class="align-middle text-center">{{ $i }}</td>
+                                        <td class="align-middle text-center"><img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 100px" alt="gambar artikel"></td>
                                         <td class="align-middle">{{ $artikel->judul }}</td>
                                         <td class="align-middle">{!! substr($artikel->isi, 0, 300) !!}{{ strlen($artikel->isi) > 300 ? "..." : "" }}</td>
                                         <td class="align-middle text-center">
