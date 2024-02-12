@@ -10,6 +10,7 @@ use App\Models\KnowledgeBase;
 use App\Models\Symptom;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class DashboardController extends Controller
 {
@@ -21,6 +22,17 @@ class DashboardController extends Controller
             'Sedang' => History::whereJsonContains('diagnosis', ['nama_diagnosis' => 'Sedang'])->count(),
             'Tinggi' => History::whereJsonContains('diagnosis', ['nama_diagnosis' => 'Tinggi'])->count(),
         ];
+
+        $dataArtikel = Article::all();
+        
+        // Ambil URL gambar dari Google Drive
+        foreach ($dataArtikel as $artikel) {
+            if ($artikel->filepath) {
+                $googleDriverFileId = $artikel->filepath;
+                $data = Gdrive::get($googleDriverFileId);
+                $fileContent = $data->file;
+            }
+        }
 
         $datas = [
             'titlePage' => 'Dashboard',
@@ -34,6 +46,7 @@ class DashboardController extends Controller
             'article' => Article::latest()->take(5)->get(),
             'activityLogs' => ActivityLog::all(),
             'visualisasiDiagnosis' => $visualisasiDiagnosis,
+            'fileContent' => $fileContent,
         ];
 
         return view('admin.dashboard', $datas);

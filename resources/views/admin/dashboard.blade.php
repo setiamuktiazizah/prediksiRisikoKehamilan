@@ -516,6 +516,7 @@
               @endphp
 
               @foreach ($sortedDataArtikel as $artikel)
+              <img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 80px" alt="gambar artikel">
               <h4><a href="{{ route('data-artikel.show', $artikel->slug) }}">{{ $artikel->judul}} </a></h4>
               <p>
                 <div style="font-size: 14px; color: #777777; margin-left: 95px;">{!! substr($artikel->isi, 0, 100) !!}{{ strlen($artikel->isi) > 100 ? "..." : "" }}</div>
