@@ -4,7 +4,7 @@
     <li><a href="{{ route('konsultasi') }}">Konsultasi</a></li>
     <li><a href="{{ route('bookmark') }}">Bookmark</a></li>
     <li><a href="{{ route('pedoman')}}">Pedoman</a></li>
-    <!-- <li><a href="#contact">Contact</a></li> -->
+    <li><a href="{{ route('artikel')}}">Artikel</a></li>
     <!-- Authentication Links -->
     @guest
     @if (Route::has('login'))
@@ -21,7 +21,7 @@
     @else
     <li class="nav-item dropdown">
       <div class="nav-link nav-profile d-flex align-items-center pe-0 dropdown-toggle" href="#" data-bs-toggle="dropdown">
-        <img src="admin/img/profile-img.jpg" alt="Profile" class="rounded-circle" style="width: 30px; height: 30px;">
+        <img src="{{asset('images/user-profile.jpg')}}" alt="Profile" class="rounded-circle" style="width: 30px; height: 30px;">
         <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
           {{ Auth::user()->name }}
         </a>

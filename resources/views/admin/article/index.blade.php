@@ -7,7 +7,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-custom-2-800">
-                <i class="bi bi-pencil mr-1"></i>
+                <i class="bi bi-file-text mr-1"></i>
                 {{ $titlePage }}
             </h1>
         </div>
@@ -49,7 +49,7 @@
                                     <tr>
                                         <td class="align-middle text-center">{{ $i }}</td>
                                         <td class="align-middle">{{ $artikel->judul }}</td>
-                                        <td class="align-middle">{!! $artikel->isi !!}</td>
+                                        <td class="align-middle">{!! substr($artikel->isi, 0, 300) !!}{{ strlen($artikel->isi) > 300 ? "..." : "" }}</td>
                                         <td class="align-middle text-center">
                                             <a href="{{ URL::to('data-artikel/' . $artikel->id) . '/edit' }}" class="btn btn-warning">
                                                 <i class="bi bi-pencil"></i> Edit

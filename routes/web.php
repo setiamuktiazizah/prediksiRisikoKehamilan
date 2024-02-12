@@ -11,6 +11,7 @@ use App\Http\Controllers\DiagnoseController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SymptomController;
 use App\Http\Controllers\KnowledgeBaseController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -60,5 +61,7 @@ Route::get('/pedoman', function () {
 })->name('pedoman');
 Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
 Route::get('bookmark/{id_bookmark}', [BookmarkController::class, 'showdata'])->name('bookmark.show');
+Route::get('/artikel', [NewsController::class, 'index'])->name('artikel');
+Route::get('artikel/{slug}', [NewsController::class, 'show'])->name('artikel.show');
 
 Auth::routes();
