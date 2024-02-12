@@ -38,6 +38,12 @@
           <span>Data Riwayat</span>
         </a>
       </li><!-- End Data Riwayat Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="{{ URL::to('/data-artikel') }}">
+          <i class="bi bi-file"></i>
+          <span>Data Artikel</span>
+        </a>
+      </li><!-- End Data Artikel Nav -->
     </ul>
 
   </aside><!-- End Sidebar-->

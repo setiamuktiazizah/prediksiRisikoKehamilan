@@ -31,6 +31,10 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
+   <!-- CSS TrixEditor -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css">
+
+
   <style>
     .logo span {
       margin-left: 10px;
@@ -475,6 +479,14 @@
     });
   </script>
   <script src="{{ asset('js/datadiagnosis.js') }}"></script>
+  <!-- JavaScript TrixEditor -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+  <script>
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+        alert('File attachment not allowed');
+    });
+</script>
   <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script> -->
 

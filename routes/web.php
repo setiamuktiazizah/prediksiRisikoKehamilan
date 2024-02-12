@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookmarkController;
@@ -44,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('data-gejala', SymptomController::class)->except('show');
         Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');
         Route::resource('data-riwayat', HistoryController::class);
+        Route::resource('data-artikel', ArticleController::class);
     });
 });
 
