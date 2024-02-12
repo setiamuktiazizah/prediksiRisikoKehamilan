@@ -8,7 +8,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-custom-2-800">
                 <i class="bi bi-clipboard mr-1"></i>
-                 {{ $titlePage }}
+                {{ $titlePage }}
             </h1>
         </div>
 
@@ -45,6 +45,10 @@
                                         <td class="align-middle text-center">{{ $i }}</td>
                                         <td class="align-middle text-center">{{ $riwayat->nama_pemilik }}</td>
                                         <td class="align-middle text-center">
+                                            <a href="{{ route('riwayat.download-pdf', $riwayat->id_riwayat) }}" class="btn btn-primary">
+                                                <i class="bi bi-file me-1"></i>
+                                                PDF
+                                            </a>
                                             <a href="{{ URL::to('data-riwayat/' . $riwayat->id_riwayat) }}" class="btn btn-success">
                                                 <i class="bi bi-eye me-1"></i>
                                                 Detail

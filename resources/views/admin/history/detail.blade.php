@@ -7,7 +7,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-custom-2-800">
-                <i class="bi bi-diagram-2 mr-1"></i>
+                <i class="bi bi-clipboard mr-1"></i>
                 {{ $titlePage }}
             </h1>
         </div>
@@ -20,6 +20,10 @@
             <div class="card kartu-custom">
                 <div class="card-header text-black fw-bold">
                     Hasil Konsultasi
+                    <a href="{{ route('riwayat.download-pdf', $id_riwayat) }}" class="btn btn-danger" style="margin-left: 600px;">
+                        <i class="bi bi-download me-1"></i>
+                        Unduh PDF
+                    </a>
                 </div>
                 <div class="card-body mt-3">
                     <div class="container-fluid">
@@ -107,7 +111,8 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer"></div>
+                <div class="card-footer">
+                </div>
             </div>
             <a href="{{ URL::to('data-riwayat') }}" class="btn btn-success mb-3">
                 <i class="bi bi-arrow-alt-circle-left me-1"></i>

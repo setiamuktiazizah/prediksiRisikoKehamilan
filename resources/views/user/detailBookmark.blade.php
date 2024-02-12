@@ -88,17 +88,17 @@
                         </thead>
                         <tbody>
                             @php
-                                $i = 1;
+                            $i = 1;
                             @endphp
                             @foreach ($diagnosis->gejala_diagnosis as $gejalaYangDipilih)
-                                <tr>
-                                    <td class="text-center">{{ $i }}</td>
-                                    <td class="text-center">{{ $gejalaYangDipilih->kode_gejala }}</td>
-                                    <td>{{ $gejalaYangDipilih->nama_gejala }}</td>
-                                </tr>
-                                @php
-                                    $i++;
-                                @endphp
+                            <tr>
+                                <td class="text-center">{{ $i }}</td>
+                                <td class="text-center">{{ $gejalaYangDipilih->kode_gejala }}</td>
+                                <td>{{ $gejalaYangDipilih->nama_gejala }}</td>
+                            </tr>
+                            @php
+                            $i++;
+                            @endphp
                             @endforeach
                         </tbody>
                     </table>
@@ -107,9 +107,9 @@
                 <div class="container-fluid">
                     <h6 class="text-custom">*) Hasil Diagnosa Sementara </h6>
                     @if ($diagnosis->nama_diagnosis == 'Tinggi')
-                        <div style="color: red" class="fw-bold">Perlu pemantauan medis yang lebih ketat untuk menjaga kesehatan Anda dan bayi.</div>
+                    <div style="color: red" class="fw-bold">Perlu pemantauan medis yang lebih ketat untuk menjaga kesehatan Anda dan bayi.</div>
                     @else
-                        <div style="color: green" class="fw-bold">Saat ini kondisi ibu dan bayi aman namun tetap patuhi perawatan prenatal untuk kesehatan terbaik Anda dan bayi.</div>
+                    <div style="color: green" class="fw-bold">Saat ini kondisi ibu dan bayi aman namun tetap patuhi perawatan prenatal untuk kesehatan terbaik Anda dan bayi.</div>
                     @endif
                     <table class="table table-bordered custom-table mt-3 mr-5" style="width: 100%">
                         <colgroup>
@@ -137,15 +137,20 @@
                     <table class="table table-bordered custom-table" style="width: 100%">
                         <tbody>
                             @foreach (json_decode($solusi->solusi) as $solusi)
-                                <tr>
-                                    <td style="text-align: justify;">{{ $solusi }}</td>
-                                </tr>
+                            <tr>
+                                <td style="text-align: justify;">{{ $solusi }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card-footer"></div>
+            <div class="card-footer">
+            </div>
+            <a href="{{ route('riwayat.download-pdf', $id_riwayat) }}" class="btn btn-warning text-center">
+                    <i class="bi bi-download me-1"></i>
+                    Unduh PDF
+                </a>
         </div>
     </div>
 </section>

@@ -37,11 +37,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::post('konsultasi', [ConsultationController::class, 'kalkulator']);
     Route::get('konsultasi/{id_konsultasi}', [ConsultationController::class, 'showdata']);
+    Route::get('data-riwayat/{id_riwayat}/download-pdf', [HistoryController::class, 'downloadPDF'])->name('riwayat.download-pdf');
 
     // Rute yang dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard-admin');
-        Route::resource('data-user',UserController::class)->except('show');
+        Route::resource('data-user', UserController::class)->except('show');
         Route::resource('data-diagnosis', DiagnoseController::class)->except('show');
         Route::resource('data-gejala', SymptomController::class)->except('show');
         Route::resource('data-basis-pengetahuan', KnowledgeBaseController::class)->except('show');

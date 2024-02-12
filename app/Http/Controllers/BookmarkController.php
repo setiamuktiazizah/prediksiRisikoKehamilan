@@ -23,6 +23,7 @@ class BookmarkController extends Controller
             'titlePage' => 'Hasil Konsultasi',
             'navLink' => 'konsultasi',
             'namaPemilik' => $dataKonsultasi['nama_pemilik'],
+            'id_riwayat' => $dataKonsultasi['id_riwayat'],
             'diagnosis' => json_decode($dataKonsultasi['diagnosis']),
             'solusi' => json_decode($dataKonsultasi['solusi'])
         ];
