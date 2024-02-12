@@ -6,6 +6,10 @@ use App\Models\ActivityLog;
 use App\Models\Article;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class ArticleController extends Controller
 {
@@ -51,11 +55,22 @@ class ArticleController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
+            'file' => 'file',
         ]);
+
+        $uploadedFile = $request->file('file');
+        $uuid = Uuid::uuid4();
+        $fileName = $uuid->toString() . '_' . $uploadedFile->getClientOriginalName();
+        $filePath = public_path('uploads/foto-artikel');
+        $uploadedFile->move($filePath, $fileName);
+        $path = public_path() . '/uploads/foto-artikel/' . $fileName;
+
+        Storage::disk('google')->put('foto-artikel/' . $fileName, File::get($path));
 
         $dataArtikel = new Article();
         $dataArtikel->judul = $request->judul;
         $dataArtikel->isi = $request->isi;
+        $dataArtikel->filepath = 'foto-artikel/' . $fileName;
         $dataArtikel->save();
 
         return redirect()->to('data-artikel')->with('success', 'Data artikel berhasil ditambahkan');
@@ -67,8 +82,25 @@ class ArticleController extends Controller
     public function show($slug)
     {
         //
-        $artikel = Article::where('slug', $slug)->firstOrFail();
-        return view('admin.article.detail', compact('artikel'));
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'activity' => 'lihat data artikel',
+        ]);
+
+        $dataArtikel = Article::where('slug', $slug)->firstOrFail();
+
+        $googleDriverFileId = $dataArtikel->filepath;
+
+        if (!$googleDriverFileId) {
+            return response('File not found', 404);
+        }
+
+        $data = Gdrive::get($googleDriverFileId);
+
+        return view('admin.article.detail', [
+            'artikel' => $dataArtikel,
+            'fileContent' => $data->file,
+        ]);
     }
 
     /**
@@ -77,13 +109,22 @@ class ArticleController extends Controller
     public function edit($id_artikel, Article $artikel)
     {
         //
-        $dataArtikel = $artikel->find($id_artikel)->toArray();
+        $dataArtikel = $artikel->findOrFail($id_artikel);;
+
+        $googleDriverFileId = $dataArtikel->filepath;
+
+        if (!$googleDriverFileId) {
+            return response('File not found', 404);
+        }
+
+        $data = Gdrive::get($googleDriverFileId);
 
         $datas = [
             'titlePage' => 'Data Artikel',
             'navLink' => 'data-artikel',
             'id_artikel' => $dataArtikel['id'],
-            'dataArtikel' => $dataArtikel
+            'dataArtikel' => $dataArtikel,
+            'fileContent' => $data->file,
         ];
 
         return view('admin.article.edit', $datas);
@@ -95,19 +136,37 @@ class ArticleController extends Controller
     public function update($id_artikel, Request $request, Article $artikel)
     {
         //
+        $dataArtikel = Article::findOrFail($id_artikel);
+
         ActivityLog::create([
             'user_id' => auth()->user()->id,
-            'activity' => 'update data diagnosis',
+            'activity' => 'update data artikel',
         ]);
 
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
+            'file' => 'file',
         ]);
 
-        $dataArtikel = $artikel->find($id_artikel);
+        $newFileName = $dataArtikel->filepath;
+
+        if ($request->hasFile('file')) {
+            $uploadedFile = $request->file('file');
+            $uuid = Uuid::uuid4();
+            $newFileName = $uuid->toString() . '_' . $uploadedFile->getClientOriginalName();
+            $filePath = public_path('uploads');
+            $uploadedFile->move($filePath, $newFileName);
+
+            Storage::disk('google')->delete($dataArtikel->filepath);
+
+            Storage::disk('google')->put('foto-artikel/' . $newFileName, File::get($filePath . '/' . $newFileName));
+        }
+
+        // $dataArtikel = $artikel->find($id_artikel);
         $dataArtikel->judul = $request->judul;
         $dataArtikel->isi = $request->isi;
+        $dataArtikel->filepath = 'foto-artikel/' . $newFileName;
         $dataArtikel->save();
 
         return redirect()->to('data-artikel')->with('success', 'Data artikel berhasil diubah');
@@ -121,11 +180,16 @@ class ArticleController extends Controller
         //
         ActivityLog::create([
             'user_id' => auth()->user()->id,
-            'activity' => 'hapus data diagnosis',
+            'activity' => 'hapus data artikel',
         ]);
 
         $dataArtikel = $artikel->find($id_artikel);
+
+        $fileName = $dataArtikel->filepath;
         $dataArtikel->delete();
+        if ($fileName) {
+            Storage::disk('google')->delete('foto-artikel/' . $fileName);
+        }
 
         return redirect()->to('data-artikel')->with('success', 'Data Artikel berhasil dihapus');
     }

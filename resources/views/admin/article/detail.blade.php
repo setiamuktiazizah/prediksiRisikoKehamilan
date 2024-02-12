@@ -6,12 +6,15 @@
 
         <!-- Content Row -->
         <div class="card kartu-custom mb-5">
-            <div class="card kartu-custom text-center">
-                <div class="card-header text-black fw-bold">
+            <div class="card kartu-custom">
+                <div class="card-header text-black fw-bold text-center">
                     {{ $artikel->judul }}
                 </div>
                 <div class="card-body mt-3 text-justify">
-                    <div class="container-fluid">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 200px" alt="gambar artikel">
+                    </div>
+                    <div class="container-fluid text-justify mt-3">
                         {!! $artikel->isi !!}
                     </div>
                 </div>

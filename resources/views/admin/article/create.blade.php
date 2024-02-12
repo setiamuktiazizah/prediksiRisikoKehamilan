@@ -23,8 +23,19 @@
                     <div class="mb-3 row">
                         <label for="judul" class="col-sm-2 col-form-label text-custom">Judul</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}">
+                            <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul">
                             @error('judul')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="file" class="col-sm-2 col-form-label text-custom">Foto</label>
+                        <div class="col-sm-2">
+                            <input type="file" class="form-control @error('file') is-invalid @enderror" id="file" name="file">
+                            @error('file')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory, Sluggable;
-    protected $fillable = ['judul', 'isi'];
+    protected $fillable = ['judul', 'isi', 'filepath'];
 
     public function sluggable(): array
     {

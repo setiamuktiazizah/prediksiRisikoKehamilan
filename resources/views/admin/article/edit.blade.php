@@ -39,6 +39,11 @@
                             <trix-editor input="isi"></trix-editor>
                         </div>
                     </div>
+                    <img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: 200px; width: 200px" alt="gambar artikel">
+                    <div class="mb-3 row">
+                        <label for="file" class="col-sm-2 col-form-label text-custom">Foto</label>
+                        <input type="file" name="file" id="file">
+                    </div>
                     <div class="mb-3 row">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-custom-2 me-md-2" type="submit">
