@@ -184,6 +184,10 @@
     .table-bordered tbody td:last-child {
       text-align: center;
     }
+
+    trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
