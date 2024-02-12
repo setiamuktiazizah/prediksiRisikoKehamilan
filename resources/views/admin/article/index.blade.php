@@ -49,7 +49,8 @@
                                     @foreach ($dataArtikel as $artikel)
                                     <tr>
                                         <td class="align-middle text-center">{{ $i }}</td>
-                                        <td class="align-middle text-center"><img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 100px" alt="gambar artikel"></td>
+                                        <!-- <td class="align-middle text-center"><img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 100px" alt="gambar artikel"></td> -->
+                                        <td class="align-middle text-center"><img src="{{ asset('uploads/'. $artikel->filepath) }}" width="auto" height="100px"></td>
                                         <td class="align-middle">{{ $artikel->judul }}</td>
                                         <td class="align-middle">{!! substr($artikel->isi, 0, 300) !!}{{ strlen($artikel->isi) > 300 ? "..." : "" }}</td>
                                         <td class="align-middle text-center">

@@ -22,10 +22,11 @@
                             <div class="card mb-4 border-0">
                                 <div class="row">
                                     <div class="col-md-4 d-flex justify-content-center align-items-center mt-5">
-                                        @if($artikel->filepath)
+                                        <!-- @if($artikel->filepath)
                                         <br>
                                         <img src="data:image; base64, {{ base64_encode($fileContent)}}" style="height: auto; width: 200px" alt="gambar artikel">
-                                        @endif
+                                        @endif --> 
+                                        <td><img src="{{ asset('uploads/'. $artikel->filepath) }}" width="auto" height="200px"></td>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
