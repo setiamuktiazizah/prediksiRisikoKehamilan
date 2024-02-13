@@ -5,13 +5,15 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Icon -->
+  <link rel="icon" href="{{asset('images\logo.jpeg')}}">
   <!-- Favicons -->
-  <link href="{{asset('admin/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <!-- <link href="{{asset('admin/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -29,6 +31,175 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
+   <!-- CSS TrixEditor -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css">
+
+
+  <style>
+    .logo span {
+      margin-left: 10px;
+    }
+
+    /* Tambahkan CSS untuk tabel responsif */
+    /* .table-responsive {
+      overflow-x: auto;
+    } */
+
+    /* Tambahkan CSS untuk memperindah tampilan tabel */
+    .table-bordered {
+      border-collapse: collapse;
+      border-radius: 10px;
+      width: 100%;
+      /* Tambahkan properti ini untuk memastikan tabel mengisi lebar kontainer */
+    }
+
+    .table-bordered thead th,
+    .table-bordered tbody td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th {
+      background-color: #f8f9fa;
+      color: #212529;
+      font-weight: bold;
+    }
+
+    .table-bordered tbody td {
+      background-color: #fff;
+      color: #212529;
+    }
+
+    .table-bordered tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* Mengatur tata letak tombol "Show" di kiri atas */
+    .dataTables_length {
+      float: left;
+      margin-bottom: 20px;
+    }
+
+    /* Mengatur tata letak tombol pencarian dan tombol "Show" */
+    /* .dataTables_length,
+    .dataTables_filter {
+      margin-right: 20px;
+    } */
+
+    /* Mengatur tata letak tombol pencarian di sebelah kanan tombol "Show" */
+    .dataTables_filter {
+      float: right;
+      margin-bottom: 20px;
+    }
+
+    /* Mengatur tata letak tombol pagination di pojok kiri */
+    .dataTables_paginate {
+      float: right;
+    }
+
+    /* Mengatur tata letak tombol pencarian saat dihover */
+    .dataTables_filter label {
+      float: right;
+    }
+
+    /* Mengatur tata letak input pencarian saat dihover */
+    .dataTables_filter label input[type="search"]:hover {
+      color: #333;
+      border: 1px solid;
+    }
+
+    /* Mengubah warna latar belakang dan teks pada tombol paginasi */
+    .dataTables_paginate {
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .dataTables_paginate .paginate_button {
+      background-color: green;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 2px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .dataTables_paginate .paginate_button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Memberikan efek hover pada tombol paginasi */
+    .dataTables_paginate .paginate_button.current,
+    .dataTables_paginate .paginate_button.current:hover {
+      background-color: darkgreen !important;
+      color: #fff !important;
+    }
+
+    /* Mengatur tampilan tombol "Previous" dan "Next" */
+    .dataTables_paginate .paginate_button.previous,
+    .dataTables_paginate .paginate_button.next {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 2px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .dataTables_paginate .paginate_button.previous:hover,
+    .dataTables_paginate .paginate_button.next:hover {
+      background-color: darkgrey;
+    }
+
+    /* Mengatur tampilan disabled pada tombol "Previous" dan "Next" */
+    .dataTables_paginate .paginate_button.disabled {
+      background-color: #ccc;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    .table-bordered {
+      border: 1px solid #9DBC98;
+    }
+
+    .table-bordered thead th {
+      border-bottom: 2px solid #9DBC98;
+      background-color: #9DBC98;
+      color: black;
+    }
+
+    .table-bordered tbody td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered tbody tr:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+
+    .table-bordered tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .table-bordered tbody td:last-child {
+      text-align: center;
+    }
+
+    trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleHeaderBtn = document.querySelector('.toggle-header-btn');
+      const header = document.getElementById('header');
+
+      toggleHeaderBtn.addEventListener('click', function() {
+        header.classList.toggle('header-open');
+      });
+    });
+  </script>
+
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jan 09 2024 with Bootstrap v5.3.2
@@ -44,11 +215,11 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="admin/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+      <i class="bi bi-list toggle-sidebar-btn toggle-header-btn"></i>
+      <a href="index.html" class="logo d-flex align-items-center" style="margin-left: 10px;">
+        <img src="{{asset('images/logo-lama.jpg')}} " alt="">
+        <span class="d-none d-lg-block">Admin</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -70,7 +241,7 @@
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
+            <i class="bi bi-bell" style="color: white;"></i>
             <span class="badge bg-primary badge-number">4</span>
           </a><!-- End Notification Icon -->
 
@@ -211,14 +382,15 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <img src="{{asset('images/profile.jpg')}}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2" style="color: white;">{{Auth::user()->name}} </span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <img src="{{asset('images/profile.jpg')}}" alt="Profile" style="width: 120px; height: 120px" class="rounded-circle">
+              <h6>{{Auth::user()->name}}</h6>
+              <span>Bidan</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -255,9 +427,12 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
+                <span style="margin-left: 5px;">{{ __('Logout') }}</span>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                </form>
               </a>
             </li>
 
@@ -291,6 +466,34 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('admin/js/main.js')}}"></script>
+
+  <!-- Datatable JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script> -->
+  <script>
+    $(document).ready(function() {
+      var table = $('#responsive-table').DataTable({
+        rowReorder: {
+          selector: 'td:nth-child(2)'
+        },
+        responsive: true
+      });
+    });
+  </script>
+  <script src="{{ asset('js/datadiagnosis.js') }}"></script>
+  <!-- JavaScript TrixEditor -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+  <script>
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+        alert('File attachment not allowed');
+    });
+</script>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script> -->
+
 
 </body>
 

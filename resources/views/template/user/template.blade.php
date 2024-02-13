@@ -10,8 +10,9 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link rel="icon" href="{{asset('images\logo.jpeg')}}">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +28,53 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
+
+  <style>
+    /* CSS tambahan untuk judul */
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* CSS tambahan untuk tabel */
+    .kartu-custom {
+      border-radius: 15px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-bordered {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th {
+      border-bottom: 2px solid #dee2e6;
+      background-color: #7286D3;
+      color: #fff;
+    }
+
+    .table-bordered tbody td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered tbody tr:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+
+    .table-bordered tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .table-bordered tbody td:last-child {
+      text-align: center;
+    }
+
+    .btn-custom-2 {
+      color: #fff;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: Impact
@@ -61,6 +109,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="{{asset('images/logo-lama.jpg')}}" alt="logo-mommymate" style="width: 35px; height: fit-content; margin-right: 10px;">
         <h1>Mommy<span>Mate</span></h1>
       </a>
 
